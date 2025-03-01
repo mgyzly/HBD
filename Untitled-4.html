@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎂 Animated Wish Card 🎉</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+            background: url('PHOTOS/photo_2025-02-27_15-37-45\ \(2\).jpg') no-repeat center center/cover;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+
+        .card {
+            width: 80%;
+            max-width: 600px;
+            height: 60vh; /* Makes it scrollable */
+            padding: 20px;
+            background: rgba(255, 182, 193, 0.85);
+            color: rgb(50, 10, 50);
+            font-size: 18px;
+            border-radius: 15px;
+            animation: fadeIn 3s ease-in-out;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+            border: 2px solid #ff69b4;
+            position: relative;
+            z-index: 10;
+            overflow-y: auto; /* Enables scrolling inside */
+        }
+
+        h1 {
+            color: #ff1493;
+            font-family: 'Pacifico', cursive;
+            font-size: 2.5em;
+            animation: textGlow 2s ease-in-out infinite alternate;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            position: absolute;
+            bottom: 10px;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #ff1493;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 5px 10px rgba(255, 20, 147, 0.4);
+        }
+
+        .btn:hover {
+            background-color: #ff69b4;
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 77, 150, 0.8);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes textGlow {
+            from { text-shadow: 0 0 10px rgba(255, 20, 147, 0.6); }
+            to { text-shadow: 0 0 20px rgba(255, 105, 180, 0.9); }
+        }
+
+        /* Floating Hearts */
+        .heart {
+            position: absolute;
+            color: #ff69b4;
+            font-size: 25px;
+            animation: floatUp 5s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+
+        /* Confetti Animation */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff1493;
+            opacity: 0.8;
+            border-radius: 50%;
+            animation: confettiFall 5s linear infinite;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>🎉 Happy 21st Birthday, Armanda! 🎂</h1>
+        <p>
+            Salam menua Armanda Mindun, sempena birthday kau yang ke-21 ni saya mau buat cringe sikit.<br><br>
+            Thanks sistur sebab bertahan untuk kawan dengan saya dari awal matriks sampai la kita di alam universiti ni. Thanks sebab selalu ada dengan saya dengar cerita yang pelik-pelik, layan karenah gila ni. Thanks sebab selalu ada masa saya sedih gembira.<br><br>
+            Walaupun kita ada banyak pergaduhan, berpisah sana sini, tidak layan satu sama lain tapi terima kasih sebab masih ada dengan saya sampai sekarang. Kalau penat, cara dia deeptalk jaa. Jangan asing. Masa pdt la kan zaman paling banyak gaduh, biasalah perubahan hormon. Biasalah, kawan mana yang nda bergaduh. Hari kita sentiasa ada naik turunnya. Tapi gaduh-gaduh ni la yang bila kita throwback kita akan rasa lucu dengar.<br><br>
+            Terima kasih manda sebab suda bertahan 21 tahun. Hidup ni susahkan. Banyak strugglenya. Tapi terima kasih sebab selalu senyum gembira. Rindu mau gaduh sama kau, saya rindu kau HAHAHA. Rindu makan abc sama cendol, rindu jadi third-wheeler, rindu kau selalu update pasal crush saya. Bilik kita jauh tapi kalau ada free time tiba-tiba pandai muncul. Saya suka pergi bilik kau tiba-tiba tapi kadang kau teda dibilik atau tidur HAHAHA.<br><br>
+            Rindunya zaman matriks ni, gaduh sama kau pun best, lagi-lagi sampai menangis ni HAHAHA kenangan betul.<br><br>
+            Kawin nanti pastikan saya dapat datang, jangan gaduh sama arel, pastikan kamu sama-sama sampai kawin. Banyak cerita saya mau cerita sama anak kamu nanti.<br><br>
+            Sayang mander ketat-ketat. Saya ja scandal #1 kau. Thanks jadi kawan saya manderrrr 🎉🎂🎁🥳
+        </p>
+    </div>
+
+    <div class="btn-container">
+        <button class="btn" onclick="window.location.href='Untitled-3.html'">⬅ Back</button>
+        <button class="btn" onclick="window.location.href='Untitled-6.html'">Next ➡</button>
+    </div>
+
+    <script>
+        // Generate Floating Hearts
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 1000);
+
+        // Generate Confetti
+        function createConfetti() {
+            const confetti = document.createElement("div");
+            confetti.classList.add("confetti");
+            confetti.style.left = Math.random() * 100 + "vw";
+            confetti.style.background = ["#ff1493", "#ff69b4", "#ffd700"][Math.floor(Math.random() * 3)];
+            confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+            document.body.appendChild(confetti);
+
+            setTimeout(() => {
+                confetti.remove();
+            }, 5000);
+        }
+
+        setInterval(createConfetti, 500);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎂 Birthday Memories 🎉</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap');
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            font-family: "Fredoka", sans-serif;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            max-width: 90%;
+            flex-wrap: wrap;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        video {
+            width: 320px;
+            height: 200px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s ease-in-out;
+            cursor: pointer;
+        }
+
+        video:hover {
+            transform: scale(1.05);
+        }
+
+        .enlarged {
+            transform: scale(1.7);
+            z-index: 10;
+        }
+
+        .button-container {
+            margin-top: 25px;
+            display: flex;
+            gap: 20px;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 17px;
+            font-weight: bold;
+            background: white;
+            color: #ff4d6d;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background: #ff4d6d;
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 77, 109, 0.7);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Floating Balloons */
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background: #ffde59;
+            border-radius: 50%;
+            box-shadow: inset -10px -10px 0 rgba(0, 0, 0, 0.2);
+            animation: floatUp 6s infinite ease-in-out;
+        }
+
+        .balloon::before {
+            content: "";
+            position: absolute;
+            width: 2px;
+            height: 50px;
+            background: white;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
+
+        /* Cake Icon */
+        .cake {
+            font-size: 50px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Confetti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: red;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: fall 4s linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0); }
+            100% { transform: translateY(100vh) rotate(720deg); }
+        }
+
+    </style>
+</head>
+<body>
+    <h1>🎂 Short Clip 🎈</h1>
+    <div class="cake">🎂</div>
+
+    <div class="gallery">
+        <video controls onclick="toggleSize(this)">
+            <video url="Photos/PHOTOS/Untitled video (1).mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="button-container">
+        <button onclick="location.href='Untitled-2.html'">⬅ Back</button>
+        <button onclick="location.href='Untitled-4.html'">Next ➡</button>
+    </div>
+
+    <script>
+        function toggleSize(video) {
+            video.classList.toggle("enlarged");
+        }
+
+        // Generate Balloons
+        function createBalloon(color, left) {
+            const balloon = document.createElement("div");
+            balloon.classList.add("balloon");
+            balloon.style.background = color;
+            balloon.style.left = left + "%";
+            balloon.style.animationDuration = (Math.random() * 3 + 4) + "s";
+            document.body.appendChild(balloon);
+        }
+
+        for (let i = 0; i < 10; i++) {
+            createBalloon(["#ff4d6d", "#ff9a9e", "#ffde59"][i % 3], Math.random() * 100);
+        }
+
+        // Generate Confetti
+        function createConfetti() {
+            const confetti = document.createElement("div");
+            confetti.classList.add("confetti");
+            confetti.style.left = Math.random() * 100 + "%";
+            confetti.style.background = ["#ff4d6d", "#ffde59", "#66d9ff"][Math.floor(Math.random() * 3)];
+            confetti.style.animationDuration = (Math.random() * 2 + 3) + "s";
+            document.body.appendChild(confetti);
+        }
+
+        for (let i = 0; i < 15; i++) {
+            createConfetti();
+        }
+    </script>
+</body>
+</html>
